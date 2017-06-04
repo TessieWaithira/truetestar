@@ -39,3 +39,12 @@ def save_user_profile(sender, instance, **kwargs):
 class Project(models.Model):
     project_name = models.CharField(max_length=50)
     project_description = models.TextField(max_length=500)
+    device_requirements = models.CharField(max_length=200, blank=True, null=True)
+    location_of_testers = models.CharField(max_length=200)
+    number_of_testers = models.CharField(max_length=200)
+    expertise_level = models.CharField(max_length=200)
+    test_instructions = models.TextField(max_length=500, blank=True)
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
+
+

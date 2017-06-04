@@ -4,6 +4,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+class Company(models.Model):
+    company_name = models.CharField(max_length=200, unique=True)
+    email = models.EmailField(max_length=254, unique=True)
+    password = models.CharField(max_length=200)
+
+
 class Profile(models.Model):
     GENDER_CHOICES = (
         ('M', 'male'),

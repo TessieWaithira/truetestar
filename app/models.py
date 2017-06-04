@@ -5,10 +5,18 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
+    GENDER_CHOICES = (
+        ('M', 'male'),
+        ('F', 'female'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=254, unique=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    phone_number = models.CharField(max_length=12)
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=20, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    interests = models.TextField(max_length=500, blank=True)
 
 
 @receiver(post_save, sender=User)

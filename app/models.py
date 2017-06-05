@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 class Company(models.Model):
     company_name = models.CharField(max_length=200, unique=True)
+    company_website = models.URLField(max_length=200)
     email = models.EmailField(max_length=254, unique=True)
     password = models.CharField(max_length=200)
 
@@ -19,6 +20,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     phone_number = models.CharField(max_length=12)
+    profile_image = models.ImageField(upload_to='images/')
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=20, blank=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -36,8 +38,9 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class Project(models.Model):
+class Test(models.Model):
     project_name = models.CharField(max_length=50)
+    project_image = models.ImageField(upload_to='images/')
     project_description = models.TextField(max_length=500)
     device_requirements = models.CharField(max_length=200, blank=True, null=True)
     location_of_testers = models.CharField(max_length=200)

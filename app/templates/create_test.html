@@ -1,0 +1,18 @@
+{% load static%}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Truetestar</title>
+</head>
+<body>
+<p>this is a test</p>
+{% for test in tests   %}
+<div>
+     <h1>{{test.project_name}}</h1>
+    <p>Start date: {{test.start_date}}</p>
+    <img src="{{ test.project_image.url }}" width="240">
+    <p>{{test.project_description|linebreaksbr}}</p>
+</div>
+{% endfor %}
+</body>
+</html>
